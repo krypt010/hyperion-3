@@ -1,0 +1,13 @@
+I'm working on a manual selection UI for finding PDF links on webpages. Currently, the 'Add PDF Links (Click Mode)' is broken.
+
+Here's the situation:
+1. In `data_engine/static/section_selector.js`, the click event listener for identifying PDF links is attached to the `screenshotImage` element. However, there is a `drawingCanvas` that sits exactly on top of it to handle rectangle drawing. This canvas is intercepting the clicks.
+2. Even if the click reaches the handler, the coordinates sent to the backend `/api/identify-pdf-link-at-point` might be incorrect if they aren't calculated relative to the element receiving the event, especially when scaling is involved.
+3. The backend method `_async_identify_pdf_link_at_point` in `data_engine/services/interactive_selector_api.py` uses `document.elementFromPoint(x, y)`. It's currently passing page-wide coordinates, but this browser function expects viewport-relative coordinates.
+
+Your goal:
+- Fix the frontend so the `drawingCanvas` handles the click event when in PDF selection mode.
+- Ensure coordinates are correctly calculated and transformed to viewport-relative positions before the backend calls `elementFromPoint`.
+- Make sure the UI displays the identified link correctly without the 'Error Identifying PDF Link' alert appearing unless there truly is no link at the point.
+
+You can run the app with `python data_engine/interactive_selector_viewer.py` and access it at port 5000.

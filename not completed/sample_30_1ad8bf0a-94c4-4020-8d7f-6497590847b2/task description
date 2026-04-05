@@ -1,0 +1,126 @@
+Find and fix the following error: Console Error
+
+A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+See more info here: https://nextjs.org/docs/messages/react-hydration-error
+
+
+  ...
+    <AnimatePresence>
+      <PresenceChild isPresent={true} initial={undefined} custom={undefined} presenceAffectsLayout={true} mode="sync" ...>
+        <motion.div initial={{opacity:1}} exit={{opacity:0, ...}} transition={{duration:0.8}} className="absolute i..." ...>
+          <div className="absolute i..." onClick={function handleInteraction} style={{opacity:1}} ...>
+            <motion.div animate={{...}} className="relative w...">
+              <div className="relative w..." style={{}} ref={function useMotionRef.useCallback}>
+                <div>
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(2.7175154123910943deg) scaleX(0)"
+-                         transform: "rotate(-4.12649deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(-0.7707330434934434deg) scaleX(0)"
+-                         transform: "rotate(-1.74898deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(-2.339980687001324deg) scaleX(0)"
+-                         transform: "rotate(-0.356358deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(3.1185435109708717deg) scaleX(0)"
+-                         transform: "rotate(-1.43656deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(-4.609078756536125deg) scaleX(0)"
+-                         transform: "rotate(-4.85407deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                <motion.div animate={{rotate:0,x:0}} className="relative h...">
+                  <div className="relative h..." style={{}} ref={function useMotionRef.useCallback}>
+                    <div>
+                    <div>
+                    <div>
+                    <motion.div className="absolute t..." style={{opacity:0, ...}}>
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-1 bg-black/80 blur-[1px]"
+                        style={{
++                         opacity: 0
+-                         opacity: "0"
++                         transform: "rotate(-0.517764429478456deg) scaleX(0)"
+-                         transform: "rotate(-2.2753deg) scaleX(0)"
+                        }}
+                        ref={function useMotionRef.useCallback}
+                      >
+                ...
+            ...
+src/app/animals/page.tsx (161:20) @ <unknown>
+
+
+  159 |
+  160 |                    {/* Damage Cracks */}
+> 161 |                    <motion.div

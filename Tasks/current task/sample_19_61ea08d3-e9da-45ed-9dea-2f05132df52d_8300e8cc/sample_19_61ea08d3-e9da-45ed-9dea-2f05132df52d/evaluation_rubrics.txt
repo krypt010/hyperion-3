@@ -1,0 +1,5 @@
+Clicking the 'Add PDF Links (Click Mode)' button must visibly toggle its state (e.g., change color, text, or show an 'Active' badge) to indicate the mode is on.
+When Click Mode is active, clicking any element within the 'Example Domain' content area must generate and display a selector (e.g., in a popup, side panel, or console).
+When Click Mode is active, the cursor should change to a 'crosshair' or 'pointer' when hovering over selectable elements in the content area.
+While in Click Mode, clicking a link (like 'Learn more') must prevent the default navigation action and instead perform the selection logic.
+There must be a way to deactivate Click Mode (e.g., clicking the button again or an 'Esc' key listener) which restores normal page interaction.

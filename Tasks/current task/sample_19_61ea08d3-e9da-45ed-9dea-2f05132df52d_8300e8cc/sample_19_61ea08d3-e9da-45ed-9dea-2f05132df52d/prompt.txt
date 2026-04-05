@@ -1,0 +1,1 @@
+I have been trying to test the 'Add PDF links' button in the manual selection UI of the data_engine. But, after I click it the mode doesn't seem to work. I click on buttons expecting a selector to be generated, but nothing happens

@@ -1,0 +1,1 @@
+we do not need a status on the date side of the suggestion history of HR, we should track the request date, not the approved date for HR. and status should be on the right side, we can add date approved under that if we want

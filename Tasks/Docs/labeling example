@@ -1,0 +1,117 @@
+Please download the following folder from the drive link in the instructions sample 39 ff4f5e08-1852-
+
+4005-a53-315dle161fba and proceed to the task
+
+
+
+Data row global key - sample 
+
+Drive - -find the global key
+
+Open 
+
+Download 
+
+Open it unzip
+
+Open in env
+
+
+
+Prompt
+
+Gemini 3 pro hi 
+
+
+
+
+
+Prompt 1 gemini flash
+
+
+
+Initialize docker container. Please don’t do anything else, I’ll give you new task once the docker container is initialized.
+
+
+Prompt 2 - gemini pro 3
+
+Role: You are a Front-End Web Development Engineer. Task is in prompt.txt, codebase in env/.
+
+
+
+Rules:
+
+Never manually edit env/ files—all changes must be written into verification/solution.sh.
+
+
+
+All execution happens inside the Docker container.
+
+
+
+Do not use user_model_trace.txt during stages 2–3.
+
+
+
+Workflow:
+
+1. Baseline: Run verify/screenshot_before.sh in the container → Verify the issue is visible → Copy result to verification_evidence/output_before.png.
+
+
+
+2. Implementation: Analyze prompt.txt → Create verification/solution.sh using sed, echo, or patch commands (do not execute yet).
+
+
+
+3. Validation: Run solution.sh in the container → Run verify/screenshot_after.sh → Copy result to verification_evidence/output_after.png.
+
+4. create a lossy_patch.txt which is a patch file for all the changes that were made
+
+
+
+
+Files to analyze:
+https://drive.google.com/drive/folders/1JSyUkapRpsNffDQG7WoX_68QcemfYa-0
+
+Submissions:
+https://drive.google.com/drive/folders/1JfFFGlXTX6MgrjoOYVxIPsn5uPh0axou
+
+Instructions
+https://docs.google.com/document/d/1OtpVt7acxgQqwFym6XoNDk2dQ-vfGWct0-WCvcNEKho/edit?tab=t.0#heading=h.7t3x7cadl7fo
+
+
+
+
+
+
+You are a Front-End Web Development Engineer. Task is in prompt.txt, codebase in env).
+
+Rules:
+
+- Never manually edit env/ files - all changes go in verification/solution.sh
+
+- All execution happens inside Docker container
+
+- Don't use user_model_trace.txt in stages 2-3
+
+Workflow:
+
+1. Baseline: Run verify/screenshot_before.sh in container - verify issue is visible + copy to
+
+verification_evidence/output_before.png
+
+2. Implementation: Analyze prompt.txt - create verification/solution.sh with sed/echo/patch
+
+commands (don't execute yet)
+
+3. Validation: Run solution.sh in container - run verify/screenshot_after.sh - copy to
+
+verification_evidence/output_after.png
+
+
+
+
+
+Take the new folder updated -uploade to the new drive
+
+

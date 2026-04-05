@@ -1,0 +1,7 @@
+The header element with class '.header' must be contained within a single row and must not wrap or cause horizontal overflow on a mobile screen.
+The logo with ID '#logo-img' must remain visible on the left side of the header.
+The original search form with ID '#search-formi' and the tag search input with ID '#tagSearchInput' must be hidden or removed from the mobile header view.
+A single magnifying glass icon (e.g., 🔍) must be visible in the header.
+A single plus icon ('+') must be visible in the header.
+A 'three dots' (ellipsis) icon must be visible in the header.
+The new magnifying glass icon, the '+' icon, and the 'three dots' icon must be grouped together and aligned to the right side of the header.

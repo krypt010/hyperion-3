@@ -1,0 +1,49 @@
+Based on the retrieved memories, here's how to run Docker for your Labelbox (Helping Hand) tasks:
+
+## Setup
+
+Your environment is already configured with a **remote Docker host** since the Windows VM can't run Linux containers natively:
+
+- **Remote host**: `129.212.180.213` (DigitalOcean Ubuntu 24.04)
+- **DOCKER_HOST**: `tcp://129.212.180.213:2375` (should already be set as a machine-level env var)
+
+## Quick Start
+
+1. **Verify the env var is set** in your terminal:
+   ```powershell
+   $env:DOCKER_HOST
+   ```
+   If empty, set it:
+   ```powershell
+   $env:DOCKER_HOST = "tcp://129.212.180.213:2375"
+   ```
+
+2. **Verify Docker connectivity**:
+   ```powershell
+   docker info
+   ```
+
+3. **Make sure Docker context is "default"** (not "desktop-linux"):
+   ```powershell
+   docker context use default
+   ```
+
+## Per-Task Workflow
+
+For each Labelbox sample:
+
+1. **Download** the sample folder from the shared Google Drive
+2. **Open** it in Antigravity (the coding editor)
+3. **Initialize the Docker container** from Antigravity — the platform handles container creation
+4. Inside the container, the prompt is: *"Role: You are a Front-End Web Development Engineer. Task is in prompt.txt, codebase in env/"*
+5. All model changes go through `verification/solution.sh`, **never** manually edit `env/` files
+6. All execution happens **inside the Docker container**
+7. After finishing, clear the Docker environment before the next task
+
+## Key Rules
+
+- **15 min max** for Gemini work time, **25 min** total per label
+- Use **Gemini 3 Pro** (fallback: Gemini 3.0 Flash) only
+- If the model loops or times out, that counts as a verified loss
+
+Want me to verify Docker connectivity right now?

@@ -1,0 +1,1 @@
+mobilde üst bar taşıyor. bunu düzeltmek için mobile ayrı bir üst bar yapalım. logo olduğu gibi kalsın o güzel. searchbar yerine sadece ama sadece tek bir büyüteç emojisi olsun yeterli. addchannel butonu "+" olsun yani addchannel yerine + yazsın. 3 nokta olduğu gibi kalsın ama ekrana sığsın. logo zaten solda oluğu için bu diğer üçü de sağa dayalı olsun

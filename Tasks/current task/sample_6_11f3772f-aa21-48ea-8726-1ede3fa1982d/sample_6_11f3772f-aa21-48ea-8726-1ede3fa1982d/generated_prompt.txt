@@ -1,0 +1,18 @@
+Update the deliveries page to accommodate a new backend API response structure. 
+
+### Requirements:
+1. **Data Model Update**: Modify the `Delivery` type in `lib/types/entities/delivery.types.ts` to include:
+   - `deliveredByName`: string
+   - `address`: A nested object containing `addressLine1`, `city`, `state`, and `zipCode`.
+
+2. **UI Component Update**: Update the `DeliveryTable` in `components/deliveries/delivery-table.tsx` to display the following columns:
+   - **Delivery ID**: Show the first 8 characters of the `id` field.
+   - **Delivered By Name**: Display the `deliveredByName` field.
+   - **Delivery Date**: Format the `deliveryDate` as `MM/DD/YYYY` (using `date-fns` or the existing `formatDate` utility).
+   - **Full Address**: Display a string formatted as `"addressLine1, zipCode"`.
+
+3. **Build Fix**: A previous implementation attempt failed because the `/deliveries` page (a client component using React Query) caused a `No QueryClient set` error during the static prerendering phase of `next build`. You must resolve this by ensuring the page is not statically generated or by wrapping the component logic to handle the build-time environment (e.g., adding `export const dynamic = 'force-dynamic'` to the page file).
+
+### Success Criteria:
+- The table displays exactly the 4 requested columns with correct formatting.
+- The application builds successfully via `npm run build` without prerendering errors.

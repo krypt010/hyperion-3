@@ -1,0 +1,4 @@
+In the 'Suggestion History' table, the first column (labeled 'Date') must no longer display a status badge (e.g., 'Approved', 'Rejected').
+The date displayed in the first 'Date' column must represent the suggestion's creation/request date, not the review/approved date.
+The last column (labeled 'Status') must consistently display the status badge for each item.
+For suggestions that have been reviewed (e.g., status is 'Approved' or 'Rejected'), the approval/review date should be displayed underneath the status badge in the last column.

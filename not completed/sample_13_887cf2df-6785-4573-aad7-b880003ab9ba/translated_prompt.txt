@@ -1,0 +1,1 @@
+Refer to the file @/Users/rakesh_1/Documents/cocial-ads-platform/resources/pages/google_ads/OptimiseKeywords.tsx. On the page @/Users/rakesh_1/Documents/cocial-ads-platform/resources/pages/keywords/KeywordsPage.tsx, data is being received in the response, but it is not displaying properly. Please fix this in my code.

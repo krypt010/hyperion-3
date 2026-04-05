@@ -1,0 +1,56 @@
+Goal
+The samples that you’ll be seeing in this project have already been worked on by an alignerr, but they were only given screenshots of what the model output. The goal of this project is to verify that the model actually has a loss when given the below prompt and the prompt.txt that you’ll find in the sample folder
+
+Environment Setup
+Before beginning the task, ensure your workstation is configured correctly:
+Docker Desktop: Must be running and active.
+Antigravity: Open and authenticated.
+Shared Drive: Ensure you have "Editor" access to the designated Google Drive link provided in the task metadata.
+
+Step-by-Step Workflow
+1. Preparation
+Download the sample folder assigned to your current DataRow from this DRIVE (https://drive.google.com/drive/folders/19UcF4p8lZbcKcbv4zvrm3NZ_lcmAbVpP), you’ll find the sample_id from the global_key of the datarow
+Open the sample folder within the Antigravity interface.
+Initialize the Docker container.
+2. Execution (Prompting & Monitoring)
+Expected Time Per Label: 25 minutes.
+If you run out of quota for Gemini-3-pro, please use gemini-3.0-flash. DO NOT USE ANY OTHER MODEL
+Max Gemini Work Time: 15 minutes.
+Input the following prompt into Antigravity:
+
+```
+Role: You are a Front-End Web Development Engineer. Task is in prompt.txt, codebase in env/.
+
+Rules:
+Never manually edit env/ files—all changes must be written into verification/solution.sh.
+
+All execution happens inside the Docker container.
+
+Do not use user_model_trace.txt during stages 2–3.
+
+Workflow:
+1. Baseline: Run verify/screenshot_before.sh in the container → Verify the issue is visible → Copy result to verification_evidence/output_before.png.
+
+2. Implementation: Analyze prompt.txt → Create verification/solution.sh using sed, echo, or patch commands (do not execute yet).
+
+3. Validation: Run solution.sh in the container → Run verify/screenshot_after.sh → Copy result to verification_evidence/output_after.png.
+
+4. create a lossy_patch.txt which is a patch file for all the changes that were made
+```
+
+⚠️ Critical Monitoring:
+Refocusing: If Gemini enters a loop (e.g., repeating the same terminal command or getting stuck in a logic cycle), you must intervene immediately to refocus the model.
+Time Cap: If the model has not successfully completed the workflow within 15 minutes, stop the process.
+If you run out of quota for Gemini-3-pro, please use gemini-3.0-flash. DO NOT USE ANY OTHER MODEL
+3. Submission
+Save all changes to the local folder and upload to the Shared Drive.
+Clear your Docker environment before the next sample.
+
+Verified Loss Criteria
+You must mark the DataRow as YES (Verified Loss) if any of the following occur:
+Task Failure: The model outputs code/commands that do not resolve the issue described in prompt.txt.
+Timeout: The model exceeds the 15-minute work limit without finishing.
+Looping: The model becomes stuck in a recursive error or logic loop that cannot be resolved through refocusing.
+Constraint Violation: The model manually edits env/ instead of using solution.sh.
+
+See "Quick Reference Table.png" for more details.

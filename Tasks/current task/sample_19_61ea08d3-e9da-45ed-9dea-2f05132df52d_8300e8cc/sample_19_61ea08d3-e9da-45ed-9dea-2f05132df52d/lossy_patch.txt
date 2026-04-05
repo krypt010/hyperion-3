@@ -1,0 +1,48 @@
+--- a/data_engine/static/section_selector.js
++++ b/data_engine/static/section_selector.js
+@@ -27,7 +27,7 @@
+         this.urlSelect.addEventListener('change', () => this.loadSelectedUrl());
+         this.addPdfLinksBtn.addEventListener('click', () => this.togglePdfLinkClickMode());
+         // Buggy listener target: screenshotImage instead of drawingCanvas
+-        this.screenshotImage.addEventListener('click', (e) => this.handlePdfLinkClick(e));
++        this.drawingCanvas.addEventListener('click', (e) => this.handlePdfLinkClick(e));
+     }
+ 
+     async loadSelectedUrl() {
+@@ -43,7 +43,7 @@
+             this.currentSessionId = data.session_id;
+             this.screenshotImage.src = `data:image/png;base64,${data.screenshot_data}`;
+             this.screenshotImage.onload = () => {
+-                const rect = this.screenshotImage.getBoundingClientRect();
++                const rect = this.drawingCanvas.getBoundingClientRect();
+                 this.drawingCanvas.width = rect.width;
+                 this.drawingCanvas.height = rect.height;
+                 this.scaleX = data.page_size.width / rect.width;
+@@ -59,7 +59,7 @@
+ 
+     async handlePdfLinkClick(e) {
+         if (!this.isPdfLinkClickModeActive) return;
+-        const rect = this.screenshotImage.getBoundingClientRect();
++        const rect = this.drawingCanvas.getBoundingClientRect();
+         const x = Math.floor((e.clientX - rect.left) * this.scaleX);
+         const y = Math.floor((e.clientY - rect.top) * this.scaleY);
+ 
+--- a/data_engine/services/interactive_selector_api.py
++++ b/data_engine/services/interactive_selector_api.py
+@@ -123,7 +123,15 @@
+                 return null;
+             }
+         """
+-        element_info = await page.evaluate(js_code, {'x': x, 'y': y})
++
++        # Coordinate Transformation: Convert full-page Y to viewport-relative Y
++        try:
++            scroll_info = await page.evaluate('() => ({ y: window.pageYOffset || document.documentElement.scrollTop })')
++            viewport_y = y - scroll_info['y']
++        except:
++            viewport_y = y
++
++        element_info = await page.evaluate(js_code, {'x': x, 'y': viewport_y})
+         if element_info: return {'success': True, 'link_info': element_info}
+         else: return {'success': False, 'link_info': None}
+ 

@@ -1,0 +1,6 @@
+The page must no longer be blank; a structured UI (table or list) must be visible.
+The Campaign Name (e.g., 'Competitor | Geo Mid | Medium Bid Cap | ExactPhrase') from the outer 'items' array must be displayed.
+The Keyword Text (e.g., 'zillo', 'zillow com') from the nested 'items' array must be correctly rendered.
+The performance metrics provided in the JSON—specifically 'Spend', 'ROAS', and 'CPA'—must be visible for each keyword.
+The data must be mapped correctly so that keywords are grouped under or associated with their respective Campaign IDs.
+The implementation must handle the nested 'items' structure in the JSON response without console errors.

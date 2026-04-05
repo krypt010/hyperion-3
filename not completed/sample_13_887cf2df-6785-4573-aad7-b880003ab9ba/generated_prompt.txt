@@ -1,0 +1,40 @@
+The `KeywordsPage.tsx` component is currently failing to display data because it is not correctly handling the nested structure of the API response from `getDashboardKeywords`. 
+
+### Current State:
+The component expects a flat array of keywords, but the API actually returns a nested object where keywords are grouped by campaign. 
+
+**Example Response:**
+```json
+{
+    "items": [
+        {
+            "campaignId": "22444727910",
+            "campaignName": "Competitor Campaign",
+            "total": 224,
+            "items": [
+                {
+                    "keywordId": "66973447",
+                    "keywordText": "zillo",
+                    "spend": 20.88,
+                    // ... other keyword fields
+                }
+            ]
+        }
+    ]
+}
+```
+
+### Objective:
+Fix `resources/pages/keywords/KeywordsPage.tsx` to correctly parse this nested response and display the data. 
+
+### Requirements:
+1.  **Data Parsing**: Modify the `useEffect` hook to flatten the nested response into a single `keywords` array so the existing logic can process it, OR update the rendering logic to support grouping by campaign (similar to how `resources/pages/google_ads/OptimiseKeywords.tsx` works).
+2.  **Refer to Reference**: Use the logic in `OptimiseKeywords.tsx` as a guide, especially for how it handles `allKeywords` and campaign grouping.
+3.  **Local Storage**: Ensure `selectedKeywordIds` are correctly extracted and stored in local storage.
+4.  **Filtering**: The search/filter logic must work correctly with the new data structure.
+5.  **Grouping (Optional but recommended)**: Group the keywords by campaign in the UI, allowing sections to be expanded/collapsed.
+
+### Success Criteria:
+- The page renders the keyword list properly without showing the "No keywords found" message when data is present.
+- Keywords are correctly associated with their campaign names and ad group names.
+- Selection and search functionality remain intact.

@@ -1,0 +1,6 @@
+The 'Loading...' text must be replaced by a functional Deliveries page interface.
+The page must contain a clear heading or title labeled 'Deliveries'.
+A data display component (such as a table or list) must be visible, showing delivery records (e.g., ID, Status, Date, Customer).
+The implementation must include functional action elements mentioned in the prompt, such as a button to 'Create Delivery' or 'Filter' records.
+The UI must follow a consistent layout structure (e.g., sidebar or navigation bar) as implied by the 'gas-distribution-client' project context.
+Status indicators (e.g., Pending, Delivered, Cancelled) must be visually distinct using colors or badges if specified in the requirements.
